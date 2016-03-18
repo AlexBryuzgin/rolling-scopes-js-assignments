@@ -105,7 +105,7 @@ function getLinearEquationRoot(a, b) {
  *
  * @example:
  *   (1,0) (0,1)     => π/2
- *   (0,1) (0,-1)    => -π
+ *   (0,1) (0,-1)    => π
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
@@ -178,7 +178,7 @@ function getParallelipidedDiagonal(a,b,c) {
  *   1678, 0  => 1678
  *   1678, 1  => 1680
  *   1678, 2  => 1700
- *   1678, 3  => 1000
+ *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
     switch(pow){
@@ -215,7 +215,7 @@ function roundToPowerOfTen(num, pow) {
  *   11 => true
  *   12 => false
  *   16 => false
- *   17 => false
+ *   17 => true
  */
 function isPrime(n) {
     throw new Error('Not implemented');
@@ -252,6 +252,7 @@ module.exports = {
     getLastDigit: getLastDigit,
     parseNumberFromString: parseNumberFromString,
     getParallelipidedDiagonal: getParallelipidedDiagonal,
+    roundToPowerOfTen: roundToPowerOfTen,
     isPrime: isPrime,
     toNumber: toNumber
 };
