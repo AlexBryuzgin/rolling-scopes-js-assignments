@@ -192,7 +192,7 @@ function roundToPowerOfTen(num, pow) {
             num=Math.round(num/100)*100;
             break;
         case 3:
-            num=Math.floor(num/1000)*1000;
+            num=Math.round(num/1000)*1000;
             break;
         default:
             num=num;               
