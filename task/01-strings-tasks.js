@@ -201,7 +201,15 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    var topSide='',botSide='',midSide='',symb1='─',symb2=' ',symb3='│';
+    if(width<2||height<2){
+        return false;
+    } else {
+        topSide='┌'+symb1.repeat(width-2)+'┐'+'\n';
+        midSide=symb3+symb2.repeat(width-2)+symb3+'\n';
+        botSide='└'+symb1.repeat(width-2)+'┘'+'\n';
+        return topSide+midSide.repeat(height-2)+botSide;
+    }
 }
 
 
@@ -223,11 +231,12 @@ function getRectangleString(width, height) {
 function encodeToRot13(str) {
     var res='';
     var mas=[];
+    var A=65,M=77,a=97,m=109,N=78,Z=90,n=110,z=122;
     for(var i=0;i<str.length;i++){
         mas[i]=str.charCodeAt(i);
-        if((mas[i]>=65&&mas[i]<=77)||(mas[i]>=97&&mas[i]<=109)){
+        if((mas[i]>=A&&mas[i]<=M)||(mas[i]>=a&&mas[i]<=m)){
             mas[i]+=13;
-        }else if((mas[i]>=78&&mas[i]<=90)||(mas[i]>=110&&mas[i]<=122)){
+        }else if((mas[i]>=N&&mas[i]<=Z)||(mas[i]>=n&&mas[i]<=z)){
             mas[i]-=13;
         } else mas[i]=mas[i];
         res+=String.fromCharCode(mas[i]);
