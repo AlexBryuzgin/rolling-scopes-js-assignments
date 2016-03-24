@@ -22,7 +22,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-    return(value1+value2)
+    return value1+value2
 }
 
 
@@ -38,7 +38,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-    return(value.length)
+    return value.length
 }
 
 /**
@@ -55,7 +55,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    return(`Hello, ${firstName} ${lastName}!`)
+    return `Hello, ${firstName} ${lastName}!`
 }
 
 /**
@@ -69,7 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    return(value.slice(7, value.length-1))
+    return value.slice(7, -1)
 }
 
 
@@ -84,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-   return(value.charAt(0))
+   return value[0];
 }
 
 /**
@@ -99,7 +99,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    return(value.trim())
+    return value.trim()
 }
 
 /**
@@ -114,7 +114,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    return(value.repeat(count))
+    return value.repeat(count)
 }
 
 /**
@@ -130,7 +130,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    return(str.replace(value,''))
+    return str.replace(value,'')
 }
 
 /**
@@ -145,7 +145,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-   return(str.slice(1,str.length-1))
+   return str.slice(1,-1)
 }
 
 
@@ -160,7 +160,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    return(str.toUpperCase())
+    return str.toUpperCase()
 }
 
 /**
@@ -174,7 +174,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    return(str.split(';'))
+    return str.split(';')
 }
 
 /**
@@ -204,12 +204,12 @@ function getRectangleString(width, height) {
     var topSide='',botSide='',midSide='',symb1='─',symb2=' ',symb3='│';
     if(width<2||height<2){
         return false;
-    } else {
+    }
         topSide='┌'+symb1.repeat(width-2)+'┐'+'\n';
         midSide=symb3+symb2.repeat(width-2)+symb3+'\n';
         botSide='└'+symb1.repeat(width-2)+'┘'+'\n';
         return topSide+midSide.repeat(height-2)+botSide;
-    }
+    
 }
 
 
@@ -230,16 +230,17 @@ function getRectangleString(width, height) {
  */
 function encodeToRot13(str) {
     var res='';
-    var mas=[];
-    var A=65,M=77,a=97,m=109,N=78,Z=90,n=110,z=122;
+    var arr=[];
+    var A='A'.charCodeAt(0),M='M'.charCodeAt(0),a='a'.charCodeAt(0),m='m'.charCodeAt(0),N='N'.charCodeAt(0);
+    var Z='Z'.charCodeAt(0),n='n'.charCodeAt(0),z='z'.charCodeAt(0);
     for(var i=0;i<str.length;i++){
-        mas[i]=str.charCodeAt(i);
-        if((mas[i]>=A&&mas[i]<=M)||(mas[i]>=a&&mas[i]<=m)){
-            mas[i]+=13;
-        }else if((mas[i]>=N&&mas[i]<=Z)||(mas[i]>=n&&mas[i]<=z)){
-            mas[i]-=13;
-        } else mas[i]=mas[i];
-        res+=String.fromCharCode(mas[i]);
+        arr[i]=str.charCodeAt(i);
+        if((arr[i]>=A&&arr[i]<=M)||(arr[i]>=a&&arr[i]<=m)){
+            arr[i]+=13;
+        }else if((arr[i]>=N&&arr[i]<=Z)||(arr[i]>=n&&arr[i]<=z)){
+            arr[i]-=13;
+        } else arr[i]=arr[i];
+        res+=String.fromCharCode(arr[i]);
     }
     return(res)
 }
@@ -258,10 +259,9 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    if(typeof(value)=="string"||value instanceof String){
-            return(true)
-    }
-        else return(false)
+    return typeof(value)=="string"
+           ||value instanceof String
+    
 }
 
 
@@ -290,10 +290,9 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    var pic=["♣","♦","♥","♠"];
-    var num=["A","2","3","4","5","6","7","8","9","1","J","Q","K"];
-    value=pic.indexOf(value.charAt(value.length-1))*13+num.indexOf(value.charAt(0));
-    return(value)
+    var pic="♣♦♥♠";
+    var num="A234567891JQK";
+    return pic.indexOf(value.slice(-1))*13+num.indexOf(value.slice(0,1))
 }
 
 
