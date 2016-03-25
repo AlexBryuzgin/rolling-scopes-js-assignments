@@ -79,8 +79,30 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-    throw new Error('Not implemented');
-//    return (endDate.getHours()-startDate.getHours()).toString()+':'+(endDate.getMinutes()-startDate.getMinutes()).toString()+':'+(endDate.getSeconds()-startDate.getSeconds()).toString()+'.'+(endDate.getMilliseconds()-startDate.getMilliseconds()).toString();
+    var hour = (endDate.getHours()-startDate.getHours()).toString();
+    var minute = (endDate.getMinutes()-startDate.getMinutes()).toString();
+    var sec = (endDate.getSeconds()-startDate.getSeconds()).toString();
+    var mil = (endDate.getMilliseconds()-startDate.getMilliseconds()).toString();
+    if(Number(hour)<10
+       &&Number(hour)>=0){
+            hour='0'+hour;
+        }
+    if(Number(minute)<10
+       &&Number(minute)>=0){
+            minute='0'+minute;
+        }   
+    if(Number(sec)<10
+       &&Number(sec)>=0){
+            sec='0'+sec;
+        }    
+     if(Number(mil)<10
+       &&Number(mil)>=0){
+            mil='00'+mil;
+        }else if(Number(mil)<100
+                &&Number(mil)>=10){
+            mil='0'+mil;
+        }  
+     return hour + ':' + minute + ':' + sec + '.' + mil;     
 }
 
 
@@ -98,7 +120,18 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+    var hourAngle=2 * Math.PI/720;
+    var minAngle=2 * Math.PI/60;
+    var hour=date.getUTCHours();
+    var min=date.getUTCMinutes();
+    if(hour>11){
+        hour-=12;
+    }
+    var res=Math.abs(hourAngle * (60 * hour + min) - minAngle * min);
+    if(res>Math.PI){
+        res-=Math.PI;
+    }
+    return res;
 }
 
 
