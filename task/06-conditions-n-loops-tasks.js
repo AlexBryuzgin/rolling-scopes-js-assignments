@@ -103,7 +103,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    return(a>0&&b>0&&c>0&&(a<b+c)&&(b<c+a)&&(c<a+b));
+    return (a>0&&b>0&&c>0&&(a<b+c)&&(b<c+a)&&(c<a+b));
 }
 
 
@@ -213,7 +213,17 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    var resStr='';
+    if(isStartIncluded===true)
+        isStartIncluded='[';
+        else isStartIncluded='(';
+    if(isEndIncluded===true)
+        isEndIncluded=']';
+        else isEndIncluded=')';
+    if(a>b)
+        resStr=isStartIncluded + b + ', ' + a + isEndIncluded;
+        else resStr=isStartIncluded + a + ', ' + b + isEndIncluded;
+    return resStr;        
 }
 
 
@@ -230,7 +240,9 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    //Надо попробовать с циклом/условием
+    
+    return str.split('').reverse().join('');
 }
 
 
@@ -247,7 +259,9 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    //Надо попробовать с циклом/условием
+    
+    return Number(num.toString().split('').reverse().join(''));
 }
 
 
