@@ -243,6 +243,7 @@ function encodeToRot13(str) {
         res+=String.fromCharCode(arr[i]);
     }
     return(res)
+    //don't know how to do with str.replace()
 }
 
 /**
