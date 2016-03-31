@@ -315,7 +315,9 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   return arr.sort(function(a,b){
+       return b>a;
+   }).splice(0,3);
 }
  
  
@@ -332,7 +334,8 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.filter((v) => v>0).length;
+   
 }
  
 /** 
@@ -365,7 +368,9 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce(function(x,y){
+       return x+y;
+   },0)
 }
  
 /** 
@@ -381,7 +386,8 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+//    return arr.filter(v => isNaN(v)==true||typeof(v)==="undefined"||v===false||v==0||v==''||v==null).length;
+  throw new Error('Not implemented');
 }
 
 /**
@@ -414,7 +420,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.join(',');
 }
 
 
