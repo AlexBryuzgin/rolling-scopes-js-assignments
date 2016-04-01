@@ -187,7 +187,11 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    for(var i=0;i<str.length;i++){
+        if(str.indexOf(str[i])==i&&str.lastIndexOf(str[i])==i)
+            return str[i];
+    }
+    return null;
 }
 
 
@@ -266,7 +270,7 @@ function reverseInteger(num) {
 
 
 /**
- * Validates the CCN (credit card number) and return true if CCN is valid
+ * Validates the CCN (credit coard number) and return true if CCN is valid
  * and false otherwise.
  *
  * See algorithm here : https://en.wikipedia.org/wiki/Luhn_algorithm
@@ -286,7 +290,33 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    var arr=ccn.toString().split('').map(function(v){return Number(v)});
+    var result=0;
+    if(arr.length%2==0){
+        for(var i=0;i<arr.length;i+=2){
+            arr[i]*=2;
+            if(arr[i]>9){
+                arr[i]-=9;
+            };
+            result=arr.reduce(function(x,y){
+                return x+y;
+            });
+            
+        }
+    } else
+    if(arr.length%2!=0){
+        for(var i=1;i<arr.length;i+=2){
+            arr[i]*=2;
+            if(arr[i]>9){
+                arr[i]-=9;
+            };
+            result=arr.reduce(function(x,y){
+                return x+y;
+            });
+            
+        }
+    }
+    return result%10==0;
 }
 
 
@@ -305,7 +335,15 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    var arr=num.toString().split('').map(function(v){return Number(v)});
+    var res=arr.reduce(function(x,y){
+        return x+y;
+    })
+    if(res>9){
+        res=res.toString().split('').map(function(v){return Number(v)});
+        res=res.reduce(function(x,y){return x+y});
+    }
+    return res;
 }
 
 

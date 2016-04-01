@@ -405,7 +405,10 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   var resArr=arr.filter(function(v){
+       return v===item;
+   })
+   return resArr.length
 }
 
 /**
@@ -449,7 +452,45 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+//     //typeof(+v)=="number" - отдельная проверка и сортировка
+   
+//    arr.sort(function(a,b){
+//        return a.city>b.city;
+//    })
+//    arr.sort(function(a,b){
+//        return a.country>b.country;
+//    })
+   
+//    if(typeof(+arr[0].city)=="number"){
+//        arr.map(function(v,i,a){
+//            +a[i].city;
+//            a.sort(function(a,b){
+//                 return a.city>b.city;
+//             })
+//             a.sort(function(a,b){
+//                 return a.country>b.country;
+//             })
+//             a[i].city.toString();
+//             return a;
+//        })
+//    }
+//    if(typeof(+arr[0].city)=="number" && typeof(+arr[0].country)=="number"){
+//        arr.map(function(v,i,a){
+//            +a[i].city;
+//            +a[i].country;
+//            a.sort(function(a,b){
+//                 return a.city>b.city;
+//             })
+//             a.sort(function(a,b){
+//                 return a.country>b.country;
+//             })
+//             a[i].city.toString();
+//             a[i].country.toString();
+//             return a;
+//        })
+//    }
+//    return arr;
+throw new Error('Not implemented');
 }
 
 /**
@@ -471,7 +512,15 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   var arr=new Array(n);
+   arr.fill(0);
+   arr.map(function(v,i,a){
+       a[i] = new Array(n);
+       a[i].fill(0);
+       a[i][i]=1;
+       return a;
+   })
+   return arr;
 }
 
 /**
@@ -488,7 +537,11 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   var arr=new Array(Math.abs(end - start + 1));
+   arr.fill(0);
+   return arr.map(function(v,i,a){
+       return v=start + i;
+   })
 }
 
 /**
@@ -593,7 +646,12 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+    var arrLen=arr.length;
+    var head=arr.splice(0,Math.floor(arrLen/2));
+    var tail=arr.splice(-Math.floor(arrLen/2));
+    var resArr=[];
+    return resArr.concat(tail,arr,head)
+    
 }
 
 
