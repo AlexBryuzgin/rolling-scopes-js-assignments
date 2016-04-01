@@ -215,10 +215,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr){
-   var res=arr.map(function(v,i,a){
-      return v.toString();      
-   })
-   return res.join('\n');
+   return arr.join('\n');
 }
 
 /**
@@ -452,45 +449,11 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-//     //typeof(+v)=="number" - отдельная проверка и сортировка
-   
-//    arr.sort(function(a,b){
-//        return a.city>b.city;
-//    })
-//    arr.sort(function(a,b){
-//        return a.country>b.country;
-//    })
-   
-//    if(typeof(+arr[0].city)=="number"){
-//        arr.map(function(v,i,a){
-//            +a[i].city;
-//            a.sort(function(a,b){
-//                 return a.city>b.city;
-//             })
-//             a.sort(function(a,b){
-//                 return a.country>b.country;
-//             })
-//             a[i].city.toString();
-//             return a;
-//        })
-//    }
-//    if(typeof(+arr[0].city)=="number" && typeof(+arr[0].country)=="number"){
-//        arr.map(function(v,i,a){
-//            +a[i].city;
-//            +a[i].country;
-//            a.sort(function(a,b){
-//                 return a.city>b.city;
-//             })
-//             a.sort(function(a,b){
-//                 return a.country>b.country;
-//             })
-//             a[i].city.toString();
-//             a[i].country.toString();
-//             return a;
-//        })
-//    }
-//    return arr;
-throw new Error('Not implemented');
+    return arr.sort((a, b) => { 
+            if(a.country !== b.country)
+                return (a.country > b.country) ? 1 : -1;  
+            else return (a.city > b.city) ? 1 : -1;                         
+        });  
 }
 
 /**
@@ -556,7 +519,9 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   return arr.filter(function(v,i,a){
+       return a.indexOf(v)===i
+       })
 }
 
 /**
