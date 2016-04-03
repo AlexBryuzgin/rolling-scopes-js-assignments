@@ -103,7 +103,12 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    return (a>0&&b>0&&c>0&&(a<b+c)&&(b<c+a)&&(c<a+b));
+    return a>0
+           && b>0
+           && c>0
+           && (a<b+c)
+           && (b<c+a)
+           &&(c<a+b);
 }
 
 
@@ -140,7 +145,8 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    return ((rect1.top+rect1.height)>rect2.top)&&((rect1.left+rect1.width)>rect2.left)
+    return (rect1.top+rect1.height)>rect2.top
+           && (rect1.left+rect1.width)>rect2.left
 }
 
 
@@ -292,6 +298,7 @@ function reverseInteger(num) {
 function isCreditCardNumber(ccn) {
     var arr=ccn.toString().split('').map(function(v){return Number(v)});
     var result=0;
+    //Для чётного количества цифр в номере
     if(arr.length%2==0){
         for(var i=0;i<arr.length;i+=2){
             arr[i]*=2;
@@ -304,6 +311,7 @@ function isCreditCardNumber(ccn) {
             
         }
     } else
+    //Для нечётного количества цифр в номерк
     if(arr.length%2!=0){
         for(var i=1;i<arr.length;i+=2){
             arr[i]*=2;
