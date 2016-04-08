@@ -413,7 +413,20 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
+    // var yearsDef = endDate.getFullYear() - startDate.getFullYear();
+    // var monthsDef = endDate.getMonth() - startDate.getMonth();
+    // var daysDef = endDate.getDate() - startDate.getDate();
+    // var minsDef = endDate.getMinutes() - startDate.getMinutes();
+    // var secsDef = endDate.getSeconds() - startDate.getSeconds();
+    // var resString = '';
+    // if(yearsDef > 0){
+    //     if(yearsDef < 2 && (30 * monthsDef + daysDef) < 200)
+    //         resString = 'a year ago';
+    //     else if(yearsDef > 1 && (30 * monthsDef + daysDef) > 200)   
+    //         resString = yearsDef.toString() + ' ' + 'years ago'; 
+    // } else if(yearsDef==0 && monthsDef > 0 )
+    //     resString = monthsDef.toString() + ' ' + 'months ago';
+    //   else if(monthsDef < 2 &&)  
 }
 
 
@@ -437,13 +450,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    var resultArray=[];
-    var a=num%n;
-    while(num!=0){
-        resultArray.unshift(a);
-        Math.floor(num);
-    }
-    return resultArray.toString();
+    
 }
 
 
@@ -518,7 +525,17 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    throw new Error('Not implemented');
+    var x = 'X';
+    var zero = '0';
+    var winner;
+    for(var i=0;i<3;i++){
+       if(position[0][i]==x || position[1][i]==x || position[0][i]==x || position[i][0]==x || position[i][1]==x || position[i][2]==x || position[i][i]==x)
+            winner = x;
+       else if(position[0][i]==zero || position[1][i]==zero || position[0][i]==zero || position[i][0]==zero || position[i][1]==zero || position[i][2]==zero || position[i][i]==zero)    
+            winner = zero;   
+       else winner;     
+    }
+    return winner;
 }
 
 
