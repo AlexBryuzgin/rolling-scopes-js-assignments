@@ -294,7 +294,17 @@ return arr1.filter(function(v){
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+    // var arr1 = arr.map(function(v,i,a){
+    //     return a[i].toString().repeat(i+1);
+    // })
+    // var arr2 = arr1.join('').split('');
+    // arr2.map(function(v,i,a){
+    // if(typeof(+v)==="number"){
+    // return +v
+    // }
+    // else return v
+    // })
+    // return arr2;
 }
 
 

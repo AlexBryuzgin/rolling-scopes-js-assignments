@@ -223,17 +223,13 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    var resStr='';
     if(isStartIncluded===true)
         isStartIncluded='[';
         else isStartIncluded='(';
     if(isEndIncluded===true)
         isEndIncluded=']';
         else isEndIncluded=')';
-    if(a>b)
-        resStr=isStartIncluded + b + ', ' + a + isEndIncluded;
-        else resStr=isStartIncluded + a + ', ' + b + isEndIncluded;
-    return resStr;        
+    return isStartIncluded + Math.min(a,b) + ', ' + Math.max(a,b) + isEndIncluded       
 }
 
 
@@ -250,9 +246,11 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    //Надо попробовать с циклом/условием
-    
-    return str.split('').reverse().join('');
+    var revStr=[];
+    for (var i=str.length-1;i>=0;i--){
+        revStr.push(str[i]);
+    }
+    return revStr.join('');
 }
 
 
@@ -269,9 +267,12 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    //Надо попробовать с циклом/условием
-    
-    return Number(num.toString().split('').reverse().join(''));
+    var str=num.toString();
+    var revStr=[];
+    for (var i=str.length-1;i>=0;i--){
+        revStr.push(str[i]);
+    }
+    return Number(revStr.join(''));
 }
 
 
@@ -427,6 +428,7 @@ function timespanToHumanString(startDate, endDate) {
     // } else if(yearsDef==0 && monthsDef > 0 )
     //     resString = monthsDef.toString() + ' ' + 'months ago';
     //   else if(monthsDef < 2 &&)  
+    throw new Error('Not implemented');
 }
 
 
@@ -450,9 +452,14 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    
-}
-
+            var resArr=[];
+            do{
+                    resArr.push(num%n);
+                    num = Math.floor(num/n);
+            }while(num>=n);
+            resArr.push(num);
+            return resArr.reverse().join('');
+        }
 
 /**
  * Returns the commom directory path for specified array of full filenames.
@@ -525,17 +532,18 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    var x = 'X';
-    var zero = '0';
-    var winner;
-    for(var i=0;i<3;i++){
-       if(position[0][i]==x || position[1][i]==x || position[0][i]==x || position[i][0]==x || position[i][1]==x || position[i][2]==x || position[i][i]==x)
-            winner = x;
-       else if(position[0][i]==zero || position[1][i]==zero || position[0][i]==zero || position[i][0]==zero || position[i][1]==zero || position[i][2]==zero || position[i][i]==zero)    
-            winner = zero;   
-       else winner;     
-    }
-    return winner;
+    throw new Error('Not implemented');
+    // var x = 'X';
+    // var zero = '0';
+    // var winner;
+    // for(var i=0;i<3;i++){
+    //    if(position[0][i]==x || position[1][i]==x || position[0][i]==x || position[i][0]==x || position[i][1]==x || position[i][2]==x || position[i][i]==x)
+    //         winner = x;
+    //    else if(position[0][i]==zero || position[1][i]==zero || position[0][i]==zero || position[i][0]==zero || position[i][1]==zero || position[i][2]==zero || position[i][i]==zero)    
+    //         winner = zero;   
+    //    else winner;     
+    // }
+    // return winner;
 }
 
 
@@ -544,7 +552,7 @@ module.exports = {
     getFactorial: getFactorial,
     getSumBetweenNumbers: getSumBetweenNumbers,
     isTriangle: isTriangle,
-    doRectanglesOverlap: doRectanglesOverlap,
+    doRectanglesOverlap: doRectanglesOverlap, 
     isInsideCircle: isInsideCircle,
     findFirstSingleChar: findFirstSingleChar,
     getIntervalString : getIntervalString,
